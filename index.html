@@ -12,7 +12,7 @@
     AFRAME.registerComponent('videohandler', {
       init: function () {
         var marker = this.el;
-        this.vid = document.querySelector("#vid");
+        this.vid = document.querySelector("#nodo1");
 
         marker.addEventListener('markerFound', function () {
           this.toggle = true;
@@ -30,7 +30,25 @@
     AFRAME.registerComponent('videohandlerone', {
       init: function () {
         var marker = this.el;
-        this.vid = document.querySelector("#swiss");
+        this.vid = document.querySelector("#nodo2");
+
+        marker.addEventListener('markerFound', function () {
+          this.toggle = true;
+          this.vid.play();
+        }.bind(this));
+
+        marker.addEventListener('markerLost', function () {
+          this.toggle = false;
+          this.vid.pause();
+        }.bind(this));
+      },
+    });
+  </script>
+  <script>
+    AFRAME.registerComponent('videohandlertwo', {
+      init: function () {
+        var marker = this.el;
+        this.vid = document.querySelector("#nodo3");
 
         marker.addEventListener('markerFound', function () {
           this.toggle = true;
@@ -57,8 +75,8 @@
 
   <a-assets>
     <video
-      id="vid"
-      src="./assets/video/Coltellino.mp4"
+      id="nodo1"
+      src="./assets/video/nodo_1.mov"
       preload="auto"
       response-type="arraybuffer"
       loop
@@ -69,8 +87,8 @@
       playsinline
     ></video>
     <video
-      id="swiss"
-      src="./assets/video/terreno.mov"
+      id="nodo2"
+      src="./assets/video/nodo_2.MOV"
       preload="auto"
       response-type="arraybuffer"
       loop
@@ -80,10 +98,22 @@
       muted
       playsinline
     ></video>
+    <video
+            id="nodo3"
+            src="./assets/video/nodo_3.MOV"
+            preload="auto"
+            response-type="arraybuffer"
+            loop
+            crossorigin
+            webkit-playsinline
+            autoplay
+            muted
+            playsinline
+    ></video>
   </a-assets>
 
   <a-marker
-    type='barcode' value='1' videohandlerone
+    type='barcode' value='7' videohandler
             smooth="true"
       smoothCount="5"
       smoothTolerance=".01"
@@ -97,20 +127,38 @@
     ></a-video>
   </a-marker>
 
+
   <a-marker
-    type='barcode' value='15' videohandler
-            smooth="true"
-      smoothCount="5"
-      smoothTolerance=".01"
-      smoothThreshold="5"
+          type='barcode' value='36' videohandlerone
+          smooth="true"
+          smoothCount="5"
+          smoothTolerance=".01"
+          smoothThreshold="5"
   >
     <a-video
-      src="#vid"
-      scale="5 5 1"
-      position="0 0.1 0"
-      rotation="-90 0 0"
+            src="#nodo1"
+            scale="3 1.6 1"
+            position="0 0.1 0"
+            rotation="-90 0 0"
     ></a-video>
   </a-marker>
+
+
+  <a-marker
+          type='barcode' value='1' videohandlertwo
+          smooth="true"
+          smoothCount="5"
+          smoothTolerance=".01"
+          smoothThreshold="5"
+  >
+    <a-video
+            src="#nodo3"
+            scale="3 1.6 1"
+            position="0 0.1 0"
+            rotation="-90 0 0"
+    ></a-video>
+  </a-marker>
+
 
   <a-entity camera></a-entity>
 </a-scene>
