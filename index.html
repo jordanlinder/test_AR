@@ -1,120 +1,120 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <!-- BASE -->
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
- 
-  <!-- VIDEOHANDELERS -->
-  <script>
-    AFRAME.registerComponent('videohandler', {
-      init: function () {
-        var marker = this.el;
-        this.vid = document.querySelector("#nodo1");
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- BASE -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
-        marker.addEventListener('markerFound', function () {
-          this.toggle = true;
-          this.vid.play();
-        }.bind(this));
+    <!-- VIDEOHANDELERS -->
+    <script>
+        AFRAME.registerComponent('nodo1', {
+            init: function () {
+                var marker = this.el;
+                this.vid = document.querySelector("#nodo1");
 
-        marker.addEventListener('markerLost', function () {
-          this.toggle = false;
-          this.vid.pause();
-        }.bind(this));
-      },
-    });
-  </script>
-  <script>
-    AFRAME.registerComponent('videohandlerone', {
-      init: function () {
-        var marker = this.el;
-        this.vid = document.querySelector("#nodo2");
+                marker.addEventListener('markerFound', function () {
+                    this.toggle = true;
+                    this.vid.play();
+                }.bind(this));
 
-        marker.addEventListener('markerFound', function () {
-          this.toggle = true;
-          this.vid.play();
-        }.bind(this));
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                }.bind(this));
+            },
+        });
+    </script>
+    <script>
+        AFRAME.registerComponent('nodo2', {
+            init: function () {
+                var marker = this.el;
+                this.vid = document.querySelector("#nodo2");
 
-        marker.addEventListener('markerLost', function () {
-          this.toggle = false;
-          this.vid.pause();
-        }.bind(this));
-      },
-    });
-  </script>
-  <script>
-    AFRAME.registerComponent('videohandlertwo', {
-      init: function () {
-        var marker = this.el;
-        this.vid = document.querySelector("#nodo3");
+                marker.addEventListener('markerFound', function () {
+                    this.toggle = true;
+                    this.vid.play();
+                }.bind(this));
 
-        marker.addEventListener('markerFound', function () {
-          this.toggle = true;
-          this.vid.play();
-        }.bind(this));
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                }.bind(this));
+            },
+        });
+    </script>
+    <script>
+        AFRAME.registerComponent('nodo3', {
+            init: function () {
+                var marker = this.el;
+                this.vid = document.querySelector("#nodo3");
 
-        marker.addEventListener('markerLost', function () {
-          this.toggle = false;
-          this.vid.pause();
-        }.bind(this));
-      },
-    });
-  </script>
-  <script>
-    AFRAME.registerComponent('videohandlercurve', {
-      init: function () {
-        var marker = this.el;
-        this.vid = document.querySelector("#curve");
+                marker.addEventListener('markerFound', function () {
+                    this.toggle = true;
+                    this.vid.play();
+                }.bind(this));
 
-        marker.addEventListener('markerFound', function () {
-          this.toggle = true;
-          this.vid.play();
-        }.bind(this));
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                }.bind(this));
+            },
+        });
+    </script>
+    <script>
+        AFRAME.registerComponent('curve', {
+            init: function () {
+                var marker = this.el;
+                this.vid = document.querySelector("#curve");
 
-        marker.addEventListener('markerLost', function () {
-          this.toggle = false;
-          this.vid.pause();
-        }.bind(this));
-      },
-    });
-  </script>
+                marker.addEventListener('markerFound', function () {
+                    this.toggle = true;
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                }.bind(this));
+            },
+        });
+    </script>
 </head>
-  
-<!-- https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection -->
-  
-<body style="margin: 0; overflow: hidden;">
-<a-scene  embedded
-          arjs='sourceType: webcam; sourceWidth:1920; sourceHeight:1080; displayWidth: 1920; displayHeight: 1080; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
-          id="scene"
-          vr-mode-ui="enabled: false"
-          loading-screen="enabled: false;">
 
-  <a-assets>
+<!-- https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection -->
+
+<body style="margin: 0; overflow: hidden;">
+<a-scene embedded
+         arjs='sourceType: webcam; sourceWidth:1920; sourceHeight:1080; displayWidth: 1920; displayHeight: 1080; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
+         id="scene"
+         vr-mode-ui="enabled: false"
+         loading-screen="enabled: false;">
+
+    <>
     <video
-      id="nodo1"
-      src="./assets/video/nodo_1.mov"
-      preload="auto"
-      response-type="arraybuffer"
-      loop
-      crossorigin
-      webkit-playsinline
-      autoplay
-      muted
-      playsinline
+            id="nodo1"
+            src="./assets/video/nodo_1.mov"
+            preload="auto"
+            response-type="arraybuffer"
+            loop
+            crossorigin
+            webkit-playsinline
+            autoplay
+            muted
+            playsinline
     ></video>
     <video
-      id="nodo2"
-      src="./assets/video/nodo_2.MOV"
-      preload="auto"
-      response-type="arraybuffer"
-      loop
-      crossorigin
-      webkit-playsinline
-      autoplay
-      muted
-      playsinline
+            id="nodo2"
+            src="./assets/video/nodo_2.MOV"
+            preload="auto"
+            response-type="arraybuffer"
+            loop
+            crossorigin
+            webkit-playsinline
+            autoplay
+            muted
+            playsinline
     ></video>
     <video
             id="nodo3"
@@ -140,66 +140,79 @@
             muted
             playsinline
     ></video>
-  </a-assets>
+    <img src="./assets/wip.jpg"
+         id="wip">
 
-  <a-marker
-    type='barcode' value='7' videohandler
+    </a-assets>
+
+    <a-marker
+            type='barcode' value='7' nodo1
             smooth="true"
-      smoothCount="5"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-  >
-    <a-video
-      src="#swiss"
-      scale="5 4 1"
-      position="0 0.1 0"
-      rotation="-90 0 0"
-    ></a-video>
-  </a-marker>
-  <a-marker
-          type='barcode' value='16' videohandlerone
-          smooth="true"
-          smoothCount="5"
-          smoothTolerance=".01"
-          smoothThreshold="5"
-  >
-    <a-video
-            src="#nodo1"
-            scale="5 4 1"
-            position="0 0.1 0"
-            rotation="-90 0 0"
-    ></a-video>
-  </a-marker>
-  <a-marker
-          type='barcode' value='36' videohandlertwo
-          smooth="true"
-          smoothCount="5"
-          smoothTolerance=".01"
-          smoothThreshold="5"
-  >
-    <a-video
-            src="#nodo3"
-            scale="5 4 1"
-            position="0 0.1 0"
-            rotation="-90 0 0"
-    ></a-video>
-  </a-marker>
-  <a-marker
-          type='barcode' value='34' videohandlercurve
-          smooth="true"
-          smoothCount="5"
-          smoothTolerance=".01"
-          smoothThreshold="5"
-  >
-    <a-video
-            src="#curve"
-            scale="8 4.5 1"
-            position="0 0.1 0"
-            rotation="-90 0 0"
-    ></a-video>
-  </a-marker>
+            smoothCount="5"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+    >
+        <a-video
+                src="#swiss"
+                scale="5 4 1"
+                position="0 0.1 0"
+                rotation="-90 0 0"
+        ></a-video>
+    </a-marker>
+    <a-marker
+            type='barcode' value='16' nodo2
+            smooth="true"
+            smoothCount="5"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+    >
+        <a-video
+                src="#nodo1"
+                scale="5 4 1"
+                position="0 0.1 0"
+                rotation="-90 0 0"
+        ></a-video>
+    </a-marker>
+    <a-marker
+            type='barcode' value='36' nodo3
+            smooth="true"
+            smoothCount="5"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+    >
+        <a-video
+                src="#nodo3"
+                scale="5 4 1"
+                position="0 0.1 0"
+                rotation="-90 0 0"
+        ></a-video>
+    </a-marker>
+    <a-marker
+            type='barcode' value='34' curve
+            smooth="true"
+            smoothCount="5"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+    >
+        <a-video
+                src="#curve"
+                scale="8 4.5 1"
+                position="0 0.1 0"
+                rotation="-90 0 0"
+        ></a-video>
+    </a-marker>
 
-  <a-entity camera></a-entity>
+    <a-marker
+            type='barcode' value='4' wip
+            smooth="true"
+            smoothCount="5"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+    >
+        <a-image src="#wip"></a-image>
+    </a-marker>
+
+    <a-entity camera></a-entity>
 </a-scene>
 
 
